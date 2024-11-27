@@ -11,6 +11,13 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "blue-custom-10": "#1B59F81A",
+        "blue-custom": "#1B59F8",
+        "black-custom-70": "#000000B2",
+        "black-custom-50": "#00000080",
+      },
+      borderColor: {
+        custom: "#eff0f6",
       },
     },
   },
