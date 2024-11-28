@@ -19,6 +19,9 @@ export default {
       borderColor: {
         custom: "#eff0f6",
       },
+      borderRadius: {
+        "20": "20px",
+      },
     },
   },
   plugins: [],

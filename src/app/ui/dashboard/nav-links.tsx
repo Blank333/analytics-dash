@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import NavButton from "./navbutton";
+import NavButton from "../nav-button";
 import {
   ArrowTrendingUpIcon,
   BoltIcon,
