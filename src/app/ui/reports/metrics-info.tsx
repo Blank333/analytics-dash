@@ -1,67 +1,46 @@
-import MetricCard from "./metric-card";
+import { convertSecondsToMandS } from "@/app/utility/convertSeconds";
+import MetricCard from "../metric-card";
+import { taskDataInfo } from "../types/taskDataInfo";
 
-function MetricsInfo({
-  current_users,
-  total_users,
-  questions_answered,
-  average_session_length_seconds,
-  starting_knowledge_percentage,
-  current_knowledge_percentage,
-}: {
-  current_users: number;
-  total_users: number;
-  questions_answered: number;
-  average_session_length_seconds: number;
-  starting_knowledge_percentage: number;
-  current_knowledge_percentage: number;
-}) {
-  const convertSeconds = (seconds: number) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes}m ${remainingSeconds}s`;
-  };
+export default function MetricsInfo({ taskData }: { taskData: taskDataInfo }) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex gap-4 flex-col md:flex-row ">
         <MetricCard
           name={"Active Users"}
-          content={`${current_users}/${total_users}`}
-          info={false}
-          showGraph={false}
+          content={`${taskData.active_users.current}`}
+          totalUsers={taskData.active_users.total}
         />
         <MetricCard
           name={"Questions Answered"}
-          content={`${questions_answered.toLocaleString()}`}
-          info={false}
-          showGraph={false}
+          content={`${taskData.questions_answered.toLocaleString()}`}
         />
         <MetricCard
           name={"Av. Session Length"}
-          content={convertSeconds(average_session_length_seconds)}
-          info={false}
-          showGraph={false}
+          content={convertSecondsToMandS(
+            taskData.average_session_length_seconds
+          )}
         />
       </div>
       <div>
         <div className="flex gap-4 flex-col md:flex-row">
           <MetricCard
             name={"Starting Knowledge"}
-            content={`${starting_knowledge_percentage}%`}
+            content={`${taskData.starting_knowledge_percentage}%`}
             info={true}
             showGraph={true}
           />
           <MetricCard
             name={"Current Knowledge"}
-            content={`${current_knowledge_percentage}%`}
-            info={false}
+            content={`${taskData.current_knowledge_percentage}%`}
             showGraph={true}
           />
           <MetricCard
             name={"Knowledge Gain"}
             content={`${
-              current_knowledge_percentage - starting_knowledge_percentage
+              taskData.current_knowledge_percentage -
+              taskData.starting_knowledge_percentage
             }%`}
-            info={false}
             showGraph={true}
           />
         </div>
@@ -69,5 +48,3 @@ function MetricsInfo({
     </div>
   );
 }
-
-export default MetricsInfo;

@@ -11,7 +11,9 @@ export default function NavButton({
 }: {
   name: string;
   href: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: React.ComponentType<{
+    className?: string;
+  }>;
 }) {
   const path = usePathname();
 
