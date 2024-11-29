@@ -10,13 +10,13 @@ export default function MetricCard({
   showGraph,
 }: {
   name: string;
-  content: string;
+  content?: string;
   info?: boolean;
   showGraph?: boolean;
   totalUsers?: number;
 }) {
   return (
-    <div className="flex flex-col bg-white rounded-20 min-h-44   w-full h-full p-4 gap-4 shadow border-custom">
+    <div className="flex flex-col bg-white rounded-20 min-h-44 w-full h-full p-4 gap-4 shadow border-custom">
       <div className="flex flex-col gap-8 relative">
         <div className="flex gap-2">
           <p className="text-sm">{name}</p>

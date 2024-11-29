@@ -6,7 +6,7 @@ export default function GroupLeaderBoard({ groups }: { groups: groupInfo[] }) {
   const rankedGroups = calculateRanksGroup(groups);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-8">
       {rankedGroups.map((group: groupInfo) => (
         <GroupleaderCard
           key={group.group_name}

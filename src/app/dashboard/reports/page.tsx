@@ -9,6 +9,8 @@ import UserLeaderboard from "@/app/ui/reports/user-leaderboard";
 import GroupLeaderBoard from "@/app/ui/reports/group-leaderboard";
 import Card from "@/app/ui/reports/card";
 import ActivityChart from "@/app/ui/reports/activity-chart";
+import Topics from "@/app/ui/reports/topics";
+import MetricCard from "@/app/ui/metric-card";
 
 export default function page() {
   const [taskData, setTaskData] = useState<any>({});
@@ -60,7 +62,11 @@ export default function page() {
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Metrics */}
         <div className="w-full">
-          {taskData.metrics && <MetricsInfo taskData={taskData.metrics} />}
+          {taskData.metrics ? (
+            <MetricsInfo taskData={taskData.metrics} />
+          ) : (
+            <MetricCard name="Metrics" />
+          )}
         </div>
 
         {/* Activity */}
@@ -98,9 +104,23 @@ export default function page() {
       </div>
 
       {/* Topics */}
-      <div className="flex gap-8">
-        <Card title="Weakest Topics "></Card>
-        <Card title="Strongest Topics "></Card>
+      <div className="flex gap-8 w-full flex-col md:flex-row">
+        <Card title="Weakest Topics">
+          {taskData.topics && (
+            <Topics
+              topics={taskData.topics.weakest}
+              danger={true}
+            />
+          )}
+        </Card>
+        <Card title="Strongest Topics ">
+          {taskData.topics && (
+            <Topics
+              topics={taskData.topics.strongest}
+              danger={false}
+            />
+          )}
+        </Card>
       </div>
 
       {/* Leaderboards */}
