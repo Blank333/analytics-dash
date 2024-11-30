@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import downloadIcon from "/public/icons/download.svg";
-// import TimeFrameSelect from "@/app/ui/reports/timeframe-select";
+import TimeFrameSelect from "@/app/ui/reports/timeframe-select";
 import { useEffect, useState } from "react";
 import MetricsInfo from "@/app/ui/reports/metrics-info";
 import UserLeaderboard from "@/app/ui/reports/user-leaderboard";
@@ -11,6 +11,8 @@ import Card from "@/app/ui/reports/card";
 import ActivityChart from "@/app/ui/reports/activity-chart";
 import Topics from "@/app/ui/reports/topics";
 import MetricCard from "@/app/ui/metric-card";
+import PeopleSelect from "../ui/reports/people-select";
+import TopicSelect from "../ui/reports/topic-select";
 
 export default function Page() {
   const [taskData, setTaskData] = useState<any>({});
@@ -83,14 +85,17 @@ export default function Page() {
       </div>
 
       {/* Filters */}
-      {/* TODO */}
       <div className="flex flex-col md:flex-row gap-4">
-        {/* <TimeFrameSelect
-          name="Timeframe"
-          options={["Last 7 Days", "This Month", "This Year", "Custom"]}
-        />
-        <TimeFrameSelect name="People" />
-        <TimeFrameSelect name="Topic" /> */}
+        <TimeFrameSelect />
+        <PeopleSelect />
+        {taskData.topics && (
+          <TopicSelect
+            topics={[
+              ...taskData.topics.weakest.map((item: any) => item.name),
+              ...taskData.topics.strongest.map((item: any) => item.name),
+            ]}
+          />
+        )}
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8">
