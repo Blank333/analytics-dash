@@ -1,18 +1,19 @@
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import graph from "/public/graph.png";
+import LineChart from "./line-chart";
 
 export default function MetricCard({
   name,
   content,
   totalUsers,
   info,
-  showGraph,
+  graphData,
 }: {
   name: string;
   content?: string;
   info?: boolean;
-  showGraph?: boolean;
+  graphData?: any;
   totalUsers?: number;
 }) {
   return (
@@ -42,15 +43,7 @@ export default function MetricCard({
       </div>
       <div className="flex justify-center">
         {/* For graphs */}
-        {showGraph && (
-          <Image
-            src={graph}
-            alt="Graph"
-            width={126}
-            height={35}
-            className="w-full"
-          />
-        )}
+        {graphData && <LineChart data={graphData} />}
       </div>
     </div>
   );

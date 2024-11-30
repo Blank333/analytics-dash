@@ -63,7 +63,10 @@ export default function page() {
         {/* Metrics */}
         <div className="w-full">
           {taskData.metrics ? (
-            <MetricsInfo taskData={taskData.metrics} />
+            <MetricsInfo
+              taskData={taskData.metrics}
+              graphData={taskData.activity.monthly}
+            />
           ) : (
             <MetricCard name="Metrics" />
           )}

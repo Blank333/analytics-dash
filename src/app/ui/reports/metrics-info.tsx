@@ -2,7 +2,13 @@ import { convertSecondsToMandS } from "@/app/utility/convertSeconds";
 import MetricCard from "../metric-card";
 import { taskDataInfo } from "../types/taskDataInfo";
 
-export default function MetricsInfo({ taskData }: { taskData: taskDataInfo }) {
+export default function MetricsInfo({
+  taskData,
+  graphData,
+}: {
+  taskData: taskDataInfo;
+  graphData?: any;
+}) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex gap-4 flex-col md:flex-row ">
@@ -28,12 +34,12 @@ export default function MetricsInfo({ taskData }: { taskData: taskDataInfo }) {
             name={"Starting Knowledge"}
             content={`${taskData.starting_knowledge_percentage}%`}
             info={true}
-            showGraph={true}
+            graphData={graphData}
           />
           <MetricCard
             name={"Current Knowledge"}
             content={`${taskData.current_knowledge_percentage}%`}
-            showGraph={true}
+            graphData={graphData}
           />
           <MetricCard
             name={"Knowledge Gain"}
@@ -41,7 +47,7 @@ export default function MetricsInfo({ taskData }: { taskData: taskDataInfo }) {
               taskData.current_knowledge_percentage -
               taskData.starting_knowledge_percentage
             }%`}
-            showGraph={true}
+            graphData={graphData}
           />
         </div>
       </div>
