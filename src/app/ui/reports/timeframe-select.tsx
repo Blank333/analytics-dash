@@ -9,11 +9,9 @@ import clsx from "clsx";
 export default function TimeFrameSelect({
   name,
   options,
-  children,
 }: {
   name: string;
   options: Array<string>;
-  children: React.ReactNode;
 }) {
   const [selected, setSelected] = useState<string>("This Year");
   const [isExpanded, setIsExpanded] = useState<boolean>(false);

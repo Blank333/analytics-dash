@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import downloadIcon from "/public/icons/download.svg";
-import TimeFrameSelect from "@/app/ui/reports/timeframe-select";
+// import TimeFrameSelect from "@/app/ui/reports/timeframe-select";
 import { useEffect, useState } from "react";
 import MetricsInfo from "@/app/ui/reports/metrics-info";
 import UserLeaderboard from "@/app/ui/reports/user-leaderboard";
@@ -12,7 +12,7 @@ import ActivityChart from "@/app/ui/reports/activity-chart";
 import Topics from "@/app/ui/reports/topics";
 import MetricCard from "@/app/ui/metric-card";
 
-export default function page() {
+export default function Page() {
   const [taskData, setTaskData] = useState<any>({});
 
   useEffect(() => {

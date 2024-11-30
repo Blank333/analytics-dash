@@ -1,6 +1,4 @@
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
-import Image from "next/image";
-import graph from "/public/graph.png";
 import LineChart from "./line-chart";
 
 export default function MetricCard({

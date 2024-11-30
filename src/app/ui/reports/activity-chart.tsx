@@ -35,7 +35,7 @@ export default function ActivityChart({
         <Bar
           dataKey="value"
           fill="url(#barGradient)"
-          background={{ fill: "#F2F7FF", radius: [50, 50, 50, 50] }}
+          background={{ fill: "#F2F7FF", radius: [50, 50, 50, 50] as any }}
           radius={[50, 50, 50, 50]}
         />
 
