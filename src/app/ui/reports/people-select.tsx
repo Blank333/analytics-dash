@@ -2,7 +2,6 @@ import { useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import CustomSelect from "../custom-select";
 import { XMarkIcon } from "@heroicons/react/16/solid";
-import { group } from "console";
 
 type Group = [groupName: string, count: number];
 
