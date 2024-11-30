@@ -13,7 +13,7 @@ export default function NavLinks() {
   const links = [
     {
       name: "Reports",
-      href: "/dashboard/reports",
+      href: "/dashboard",
       icon: ArrowTrendingUpIcon,
     },
     {
