@@ -33,11 +33,45 @@ export default function page() {
     fetchData();
   }, []);
 
+  const handleDownload = async () => {
+    // const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    const targetUrl = "https://testd5-img.azurewebsites.net/api/imgdownload";
+
+    try {
+      const response = await fetch(targetUrl, {
+        method: "POST",
+        body: JSON.stringify({
+          api: taskData.api_secret,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+      const base64String = data.base64_string;
+
+      const link = document.createElement("a");
+      link.href = `data:image/png;base64,${base64String}`;
+      link.download = data.filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Download failed", error);
+    }
+  };
+
   return (
     <main className="flex flex-col gap-8">
       <div className="flex justify-between pb-8 border-b-2 ">
         <h1 className="text-2xl font-bold">Reports</h1>
-        <button className="flex items-center">
+        <button
+          className="flex items-center"
+          onClick={handleDownload}
+        >
           <Image
             src={downloadIcon}
             alt="Download"

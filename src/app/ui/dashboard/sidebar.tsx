@@ -17,6 +17,7 @@ export default function SideBar() {
         >
           {/* Desktop */}
           <Image
+            priority
             src={logoLarge}
             alt="Logo"
             width={138}
